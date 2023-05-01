@@ -30,6 +30,7 @@ function getCompiler(opt) {
             ]
         ],
         plugins: [
+            'istanbul'
             [
                 '@babel/plugin-transform-runtime',
                 {
@@ -44,7 +45,7 @@ function getCompiler(opt) {
                     // // 为true时打包体积会稍微有些大 但生成器函数并不会污染全局作用域
                     regenerator: true,
                 }
-            ]
+            ],
         ],
         babelHelpers: 'runtime',
         exclude: 'node_modules/**'

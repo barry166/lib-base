@@ -106,6 +106,28 @@ describe('单元测试', function () {
         });
     });
 
+    describe('Map and Set', function () {
+        it('Map', function () {
+            var map = new Map();
+            map.set('a', 1);
+            map.set('b', 2);
+
+            var temp = clone(map);
+            expect(temp).to.eql(map);
+            expect(temp).not.to.be(map);
+        });
+
+        it('Set', function () {
+            var set = new Set();
+            set.add(1);
+            set.add(2);
+
+            var temp = clone(set);
+            expect(temp).to.eql(set);
+            expect(temp).not.to.be(set);
+        });
+    })
+
     describe('cloneJSON', function () {
         it('常规', function () {
             for (var i = 0; i < simpleList.length; i++) {
