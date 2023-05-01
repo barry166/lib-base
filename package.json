@@ -1,5 +1,5 @@
 {
-  "name": "lib-base",
+  "name": "clone",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -29,6 +29,7 @@
     "@rollup/plugin-terser": "^0.4.1",
     "babel-plugin-istanbul": "^6.1.1",
     "cross-env": "^7.0.3",
+    "es5-shim": "^4.6.7",
     "expect.js": "^0.3.1",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",

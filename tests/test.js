@@ -5,7 +5,7 @@ describe('单元测试', function () {
     this.timeout(1000);
 
     // 简单值
-    var simpleList = [
+    const simpleList = [
         {
             a: 1
         },
@@ -21,7 +21,7 @@ describe('单元测试', function () {
     ];
 
     // 正常cases
-    var normalList = [
+    const normalList = [
         {
             a: [],
         },
@@ -46,12 +46,12 @@ describe('单元测试', function () {
     ];
 
     // 父子循环引用
-    var a = [1, 2, 3];
+    const a = [1, 2, 3];
     a.push(a);
 
-    var b = { a1: 1, a2: 2, a3: 3 };
+    const b = { a1: 1, a2: 2, a3: 3 };
     b.a4 = b;
-    var singleRefList = [
+    const singleRefList = [
         {
             a: a,
         },
@@ -64,12 +64,12 @@ describe('单元测试', function () {
     ];
 
     // 多层级循环引用
-    var a = [1, [2]];
+    const a = [1, [2]];
     a[1].push(a);
 
-    var b = { a1: 1, a2: { b1: 1 } };
+    const b = { a1: 1, a2: { b1: 1 } };
     b.a2.b2 = b;
-    var complexRefList = [
+    const complexRefList = [
         {
             a: a,
         },
@@ -82,13 +82,13 @@ describe('单元测试', function () {
     ];
     describe('clone', function () {
         it('常规', function () {
-            for (var i = 0; i < simpleList.length; i++) {
+            for (const i = 0; i < simpleList.length; i++) {
                 // 确保全等
                 expect(clone(simpleList[i].a)).to.be(simpleList[i].a);
             }
 
-            for (var i = 0; i < normalList.length; i++) {
-                var temp = clone(normalList[i].a);
+            for (const i = 0; i < normalList.length; i++) {
+                const temp = clone(normalList[i].a);
 
                 // 确保不全等
                 expect(temp).not.to.be(normalList[i].a);
@@ -98,31 +98,31 @@ describe('单元测试', function () {
         });
 
         it('简单循环引用', function () {
-            var temp = clone(singleRefList[0].a);
+            const temp = clone(singleRefList[0].a);
             expect(temp).to.be(temp[3]);
 
-            var temp = clone(singleRefList[1].a);
+            const temp = clone(singleRefList[1].a);
             expect(temp).to.be(temp['a4']);
         });
     });
 
     describe('Map and Set', function () {
         it('Map', function () {
-            var map = new Map();
+            const map = new Map();
             map.set('a', 1);
             map.set('b', 2);
 
-            var temp = clone(map);
+            const temp = clone(map);
             expect(temp).to.eql(map);
             expect(temp).not.to.be(map);
         });
 
         it('Set', function () {
-            var set = new Set();
+            const set = new Set();
             set.add(1);
             set.add(2);
 
-            var temp = clone(set);
+            const temp = clone(set);
             expect(temp).to.eql(set);
             expect(temp).not.to.be(set);
         });
@@ -130,13 +130,13 @@ describe('单元测试', function () {
 
     describe('cloneJSON', function () {
         it('常规', function () {
-            for (var i = 0; i < simpleList.length; i++) {
+            for (const i = 0; i < simpleList.length; i++) {
                 // 确保全等
                 expect(clone(simpleList[i].a)).to.be(simpleList[i].a);
             }
 
-            for (var i = 0; i < normalList.length; i++) {
-                var temp = clone(normalList[i].a);
+            for (const i = 0; i < normalList.length; i++) {
+                const temp = clone(normalList[i].a);
 
                 // 确保不全等
                 expect(temp).not.to.be(normalList[i].a);
@@ -148,13 +148,13 @@ describe('单元测试', function () {
 
     describe('cloneLoop', function () {
         it('常规', function () {
-            for (var i = 0; i < simpleList.length; i++) {
+            for (const i = 0; i < simpleList.length; i++) {
                 // 确保全等
                 expect(clone(simpleList[i].a)).to.be(simpleList[i].a);
             }
 
-            for (var i = 0; i < normalList.length; i++) {
-                var temp = clone(normalList[i].a);
+            for (const i = 0; i < normalList.length; i++) {
+                const temp = clone(normalList[i].a);
 
                 // 确保不全等
                 expect(temp).not.to.be(normalList[i].a);
@@ -164,23 +164,23 @@ describe('单元测试', function () {
         });
 
         it('简单循环引用', function () {
-            var temp = clone(singleRefList[0].a);
+            const temp = clone(singleRefList[0].a);
             expect(temp).to.be(temp[3]);
 
-            var temp = clone(singleRefList[1].a);
+            const temp = clone(singleRefList[1].a);
             expect(temp).to.be(temp['a4']);
         });
     });
 
     describe('cloneForce', function () {
         it('常规', function () {
-            for (var i = 0; i < simpleList.length; i++) {
+            for (const i = 0; i < simpleList.length; i++) {
                 // 确保全等
                 expect(clone(simpleList[i].a)).to.be(simpleList[i].a);
             }
 
-            for (var i = 0; i < normalList.length; i++) {
-                var temp = clone(normalList[i].a);
+            for (const i = 0; i < normalList.length; i++) {
+                const temp = clone(normalList[i].a);
 
                 // 确保不全等
                 expect(temp).not.to.be(normalList[i].a);
@@ -190,18 +190,18 @@ describe('单元测试', function () {
         });
 
         it('简单循环引用', function () {
-            var temp = clone(singleRefList[0].a);
+            const temp = clone(singleRefList[0].a);
             expect(temp).to.be(temp[3]);
 
-            var temp = clone(singleRefList[1].a);
+            const temp = clone(singleRefList[1].a);
             expect(temp).to.be(temp['a4']);
         });
 
         it('复杂循环引用', function () {
-            var temp = clone(complexRefList[0].a);
+            const temp = clone(complexRefList[0].a);
             expect(temp).to.be(temp[1][1]);
 
-            var temp = clone(complexRefList[1].a);
+            const temp = clone(complexRefList[1].a);
             expect(temp).to.be(temp.a2.b2);
         });
     });

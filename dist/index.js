@@ -1,5 +1,5 @@
 /*!
- * lib-base 1.0.0 (https://github.com/barry166)
+ * clone 1.0.0 (https://github.com/barry166)
  * API 
  * Copyright 2017-2023 All Rights Reserved
  * Licensed under MIT
