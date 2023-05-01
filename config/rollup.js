@@ -43,7 +43,6 @@ function getCompiler(opt) {
                     // // 切换生成器函数是否污染全局
                     // // 为true时打包体积会稍微有些大 但生成器函数并不会污染全局作用域
                     regenerator: true,
-                    // version: '7.0.0-beta.0',
                 }
             ]
         ],

@@ -6,6 +6,7 @@
   "module": "dist/index.esm.js",
   "sideEffects": false,
   "scripts": {
+    "test": "mocha",
     "clean": "rimraf ./dist",
     "build:cjs": "rollup -c config/rollup.config.js",
     "build:esm": "rollup -c config/rollup.config.esm.js",
@@ -25,6 +26,9 @@
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-terser": "^0.4.1",
+    "cross-env": "^7.0.3",
+    "expect.js": "^0.3.1",
+    "mocha": "^10.2.0",
     "rollup": "^3.21.2"
   }
 }

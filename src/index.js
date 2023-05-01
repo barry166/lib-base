@@ -1,8 +1,9 @@
-function clone(obj, map = new Map()) {
+function clone(obj, map = new WeakMap()) {
     if (typeof obj !== 'object' || obj === null) return obj
-    if (map.get(obj)) {
-        return map.get(obj)
-    }
+
+    const objFromMap = map.get(obj)
+    if (objFromMap) return objFromMap
+
     let target = {}
     map.set(obj, target)
 
@@ -24,16 +25,18 @@ function clone(obj, map = new Map()) {
     }
 
     if (obj instanceof Array) {
-        target = obj.map(item => clone(item, map))
-    }
-
-    // 对象情况
-    for (let key in obj) {
-        const val = clone(obj[key], map)
-        target[key] = val
+        obj.forEach((item, index) => {
+            target[index] = clone(item, map)
+        })
+    } else {
+        for (const key in obj) {
+            const val = obj[key]
+            target[key] = clone(val, map)
+        }
     }
 
     return target
+
 }
 
 module.exports = clone;
